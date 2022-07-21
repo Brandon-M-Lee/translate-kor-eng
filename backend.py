@@ -114,5 +114,5 @@ def eng_to_kor(s):
         else:
             kor_str += kor_index[eng2krindex[s[i]]]
     
-    return kor_str, join_jamos(kor_str)
+    return join_jamos(kor_str)
 
