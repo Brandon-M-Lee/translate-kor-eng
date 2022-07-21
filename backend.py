@@ -14,8 +14,8 @@ def kor_to_eng(s):
     eng_str = ""
 
     for c in jamo_str:
-        if c == ' ':
-            eng_str += ' '
+        if not c.isalpha():
+            eng_str += c
         for i in range(1, 52):
             if kor_index[i] == c:
                 eng_str += krindex2eng[i]
@@ -33,6 +33,9 @@ def eng_to_kor(s):
     for i in range(len(s)):
         if flag:
             flag = False
+            continue
+        if not s[i].isalpha():
+            kor_str += s[i]
             continue
         if s[i] == 'h' and i < len(s)-1:
             if s[i+1] == 'k':
