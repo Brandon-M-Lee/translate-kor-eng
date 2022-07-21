@@ -4,6 +4,7 @@ os.system('pip install -r requirements.txt')
 from variable import *
 from unicode import join_jamos
 from jamo import h2j, j2hcj
+import clipboard
 
 def kor_to_eng(s):
     """
@@ -116,3 +117,5 @@ def eng_to_kor(s):
     
     return join_jamos(kor_str)
 
+def copy_to_clipboard(s):
+    clipboard.copy(s)
