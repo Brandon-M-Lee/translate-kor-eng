@@ -67,7 +67,7 @@ def eng_to_kor(s):
             else:
                 kor_str += kor_index[eng2krindex['m']]
         # 여기부터 쌍자음 받침 처리
-        elif s[i] == 'r' and s[i+2] in consonant:
+        elif s[i] == 'r' and s[i+2] in consonant and i<len(s)-2:
             if s[i+1] == 't':
                 kor_str += kor_index[eng2krindex['rt']]
                 flag = True
