@@ -34,8 +34,6 @@ def eng_to_kor(s):
         if flag:
             flag = False
             continue
-        if s[i] == ' ':
-            kor_str += ' '
         if s[i] == 'h' and i < len(s)-1:
             if s[i+1] == 'k':
                 kor_str += kor_index[eng2krindex['hk']]
@@ -67,17 +65,19 @@ def eng_to_kor(s):
             else:
                 kor_str += kor_index[eng2krindex['m']]
         # 여기부터 쌍자음 받침 처리
-        if s[i] == 'r':
+        elif s[i] == 'r':
             if i < len(s)-2:
                 if s[i+1] == 't' and s[i+2] in consonant:
                     kor_str += kor_index[eng2krindex['rt']]
                     flag = True
                 else:
-                    kor_str += kor_index[eng2krindex['r']]
-            else:
+                    kor_str += kor_index[eng2krindex[s[i]]]
+            elif i == len(s)-2:
                 if s[i+1] == 't':
                     kor_str += kor_index[eng2krindex['rt']]
                     flag = True
+            else:
+                kor_str += kor_index[eng2krindex[s[i]]]
         elif s[i] == 's':
             if i < len(s)-2:
                 if s[i+1] == 'w' and s[i+2] in consonant:
@@ -87,8 +87,8 @@ def eng_to_kor(s):
                     kor_str += kor_index[eng2krindex['sg']]
                     flag = True
                 else:
-                    kor_str += kor_index[eng2krindex['s']]
-            else:
+                    kor_str += kor_index[eng2krindex[s[i]]]
+            elif i == len(s)-2:
                 if s[i+1] == 'w':
                     kor_str += kor_index[eng2krindex['sw']]
                     flag = True
@@ -96,7 +96,9 @@ def eng_to_kor(s):
                     kor_str += kor_index[eng2krindex['sg']]
                     flag = True
                 else:
-                    kor_str += kor_index[eng2krindex['s']]
+                    kor_str += kor_index[eng2krindex[s[i]]]
+            else:
+                kor_str += kor_index[eng2krindex[s[i]]]
         elif s[i] == 'f':
             if i < len(s)-2:
                 if s[i+1] == 'r' and s[i+2] in consonant:
@@ -121,8 +123,8 @@ def eng_to_kor(s):
                     kor_str += kor_index[eng2krindex['fg']]
                     flag = True
                 else:
-                    kor_str += kor_index[eng2krindex['f']]
-            else:
+                    kor_str += kor_index[eng2krindex[s[i]]]
+            elif i == len(s)-2:
                 if s[i+1] == 'r':
                     kor_str += kor_index[eng2krindex['fr']]
                     flag = True
@@ -145,18 +147,24 @@ def eng_to_kor(s):
                     kor_str += kor_index[eng2krindex['fg']]
                     flag = True
                 else:
-                    kor_str += kor_index[eng2krindex['f']]
+                    kor_str += kor_index[eng2krindex[s[i]]]
+            else:
+                kor_str += kor_index[eng2krindex[s[i]]]
         elif s[i] == 'q':
             if i < len(s)-2:
                 if s[i+1] == 't' and s[i+2] in consonant:
                     kor_str += kor_index[eng2krindex['qt']]
                     flag = True
                 else:
-                    kor_str += kor_index[eng2krindex['q']]
-            else:
+                    kor_str += kor_index[eng2krindex[s[i]]]
+            elif i == len(s)-2:
                 if s[i+1] == 't':
                     kor_str += kor_index[eng2krindex['qt']]
                     flag = True
+                else:
+                    kor_str += kor_index[eng2krindex[s[i]]]
+            else:
+                kor_str += kor_index[eng2krindex[s[i]]]
         else:
             kor_str += kor_index[eng2krindex[s[i]]]
     
